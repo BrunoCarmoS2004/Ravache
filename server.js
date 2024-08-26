@@ -2,7 +2,15 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const axios = require('axios');
+const rotas = require('./routes')
 
+app.use(express.json());
+app.use('/api', rotas)
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, ()=> console.log(`Servidor rodando na porta ${PORT}`))
+
+/*
 app.get('/', (req, res)=>{
     res.send('Hello Word');
 })
@@ -40,3 +48,4 @@ app.get('/novarota', (req, res)=>{
 app.listen(port, ()=>{
     console.log(`Servidor rodando em http://localhost:${port}`);
 })
+*/
