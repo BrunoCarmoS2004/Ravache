@@ -1,4 +1,6 @@
-const {Model, DataTypes} = require('sequelize')
+const {Sequelize, Model, DataTypes } = require('sequelize');
+const config = require('../config/database')
+const sequelize = new Sequelize(config)
 
 class Endereco extends Model{}
 
@@ -42,8 +44,8 @@ Endereco.init({
     },
 },
 {
-    saquelize,
+    sequelize,
     modelName: 'Endereco',
-    tableName: 'endereco',
+    tableName: 'enderecos',
     timestamps: true, //Define se quer ou não os campos createdAt e updatedAt
 });
