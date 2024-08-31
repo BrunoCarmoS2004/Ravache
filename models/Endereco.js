@@ -1,51 +1,55 @@
-const {Sequelize, Model, DataTypes } = require('sequelize');
-const config = require('../config/database')
-const sequelize = new Sequelize(config)
+const { Model, DataTypes } = require("sequelize");
 
-class Endereco extends Model{}
+class Endereco extends Model {}
 
-Endereco.init({
-    Id:{
+module.exports = (sequelize) => {
+  Endereco.init(
+    {
+      Id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-    },
-    Cep:{
+        allowNull: false,
+      },
+      Cep: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    Logradouro:{
+      },
+      Logradouro: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    Numero:{
+      },
+      Numero: {
         type: DataTypes.INTEGER,
         allowNull: false,
-    },
-    Complemento:{
+      },
+      Complemento: {
+        type: DataTypes.STRING,
+      },
+      Bairro: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    Bairro:{
+      },
+      Cidade: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    Cidade:{
+      },
+      Estado: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    Estado:{
+      },
+      MunicipioIBGE: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
     },
-    MunicipioIBGE:{
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-},
-{
-    sequelize,
-    modelName: 'Endereco',
-    tableName: 'enderecos',
-    timestamps: true, //Define se quer ou não os campos createdAt e updatedAt
-});
+    {
+      sequelize,
+      modelName: "Endereco",
+      tableName: "enderecos",
+      timestamps: false,
+    }
+  );
+
+  return Endereco;
+};
